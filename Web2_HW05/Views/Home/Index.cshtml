@@ -1,8 +1,25 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var result = (WalmartSearchResult)ViewData["walmartResults"];
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>@ViewData["dollars"]</p>
+
+    
+    <div>
+        Searching For @result.Query
+        <ul>
+            @foreach (var item in result.Items)
+            {
+                <li>
+                    @item.Name
+                    <img src="@item.ThumbnailImage" />
+                    @item.SalePrice.ToString("c")
+                </li>
+            }
+        </ul>
 </div>
+    </div>
